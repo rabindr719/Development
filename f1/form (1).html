@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form1">
+
+        <label for="Username">Username : - </label>
+        <input type="text" id="name"><br><br>
+
+        <label for="Password">Password : -</label>
+        <input type="password" id="Password"><br><br>
+
+        <label for="address" id="">Address : - </label>
+        <input type="text" id="add"><br><br>
+
+        <input type="button" onclick="myfun()" id="btn" value="Print">
+        <br>
+        <h2 id="opt" style="display:none">Output</h2>
+    </form>
+    <p id="demo">
+    </p>
+    <button style="display: none;" type="button" value="edit" id="edit"> Edit</button>
+    <script>
+        var uname, pass, add;
+        var form = document.getElementById('form1');
+        function myfun() {
+            let str = "";
+            uname = document.getElementById('name').value;
+            pass = document.getElementById('Password').value;
+            add = document.getElementById('add').value;
+            str = "Name :  " + uname + "<br>" + "Password : " + pass + "<br>" + "Address : " + add;
+            document.getElementById('demo').innerHTML = str;
+            document.getElementById('edit').style.display = 'block';
+            //form.style.display = 'none'; 
+            document.getElementById('opt').style.display = 'block';
+        }
+        document.getElementById('edit').addEventListener('click', function() {
+            //form.style.display = 'block';
+            document.getElementById('demo').innerHTML = "";
+            document.getElementById('edit').style.display = 'none';
+            document.getElementById('opt').style.display = 'none';
+            let uname = document.getElementById('name').value = uname;
+            let pass = document.getElementById('Password').value = pass;
+            let add = document.getElementById('add').value = add;
+        })
+    </script>
+</body>
+
+</html>

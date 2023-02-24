@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="xy"></p>
+   
+
+    <button id="btn1" value="btn1" onclick="clicked()">BTN1</button>
+    <button id="btn2" value="btn2" onclick="clicked()">BTN2</button>
+    
+</body>
+<script>
+    var arraySelected=[];
+    function clicked(){
+
+
+var btn = document.getElementById("btn1");
+
+var newBtn = btn.value;
+
+document.getElementById("xy").push(newBtn);
+
+console.log(arraySelected);
+}
+</script>
+</html>
