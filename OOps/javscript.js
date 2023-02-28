@@ -160,3 +160,56 @@ console.log(acc1);
 console.log(acc1.pin);
 
 // accesss through # movements
+
+
+//Entrire OverView of Javascript Classes
+
+
+class Student{
+    university ='University of Nalanda';
+    #studyHours=0;
+    #course;
+
+    //Static method is used as Helper of Method
+    static numSubject=10;
+
+    constructor(fullName, birthYear, startYear, course){
+        // super(fullName, birthYear);
+        super.fullName;
+        super.birthYear;
+
+
+        this.startYear=startYear;
+        this.#course=course;
+    }
+
+    introduce(){
+        console.log(`I study ${this.#course} at ${this.university}`);
+
+    }
+    study(h){
+        this.#makeCoffe();
+        this.#studyHours+=h;
+    }
+    #makeCoffe(){
+        return `Here is Coffe for You`;
+    }
+
+    get testScore(){
+        return this._testScore;
+    }
+
+    set testScore(score){
+        //Terniary Operator
+        this._testScore=score<=28? score:0;
+    }
+
+    static printCurriculam(){
+        console.log(`There are ${this.numSubject} subject`);
+
+    }
+}
+
+const student=new Student('Rabindra', 2000, 2023, 'CyberSecurity');
+
+console.log(student);

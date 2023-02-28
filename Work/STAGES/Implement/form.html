@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <form action="" id="form1">
+
+        <label for="Username">Username : - </label>
+        <input type="text" id="name"><br><br>
+
+        <label for="Password">Password : -</label>
+        <input type="password" id="Password"><br><br>
+
+        <label for="address" id="">Address : - </label>
+        <input type="text" id="add"><br><br>
+
+        <input type="button" onclick="myfun()" id="btn" value="Print">
+        <br>
+        <h1 id="suc" style="display: none;">Sucess</h1><br><br>
+        <h2 id="opt" style="display:none">Output</h2>
+    </form>
+    <p id="demo">
+    <div style="display: flex;">
+        <button style="display: none;" type="button" value="edit" id="edit"> Edit</button>
+        <button style="display: none;" type="button" value="edit" id="sbt"> Submit</button>
+    </div>
+    </p>
+
+    <!-- <div id="demo">
+    <div style="display: flex;">
+        <button style="display: none;" type="button" value="edit" id="edit"> Edit</button>
+        <button style="display: none;" type="button" value="edit" id="sbt"> Submit</button>
+    </div>
+</div> -->
+
+
+    <script>
+
+        var form = document.getElementById('form1');
+
+
+        function myfun() {
+
+            const uname = document.getElementById('name').value;
+            const pass = document.getElementById('Password').value;
+            const add = document.getElementById('add').value;
+
+            let array = [];
+            array.push({ uname: uname, pass: pass, add: add });
+            console.log(array);
+
+
+            const str = `\nName : ${uname} \nPassword : ${pass} \nAddress : ${add}\n`;
+            console.log(str);
+            // pTag.add(str);
+            // const v=document.createElement('p').add(str);
+            // str = "Name :  " + uname + "<br>" + "Password : " + pass + "<br>" + "Address : " + add;
+            // pTag.addEventListener('load',()=>{
+
+            array.forEach((x) => {
+                const br = document.createElement('br');
+                document.getElementById('demo').append(x.uname, x.pass, x.add, br);
+            })
+
+            document.getElementById('edit').style.display = 'block';
+            document.getElementById('sbt').style.display = 'block';
+            document.getElementById('opt').style.display = 'block';
+
+        }
+        document.getElementById('edit').addEventListener('click', function () {
+            //form.style.display = 'block';
+            document.getElementById('demo').innerHTML = "";
+            document.getElementById('edit').style.display = 'none';
+            document.getElementById('sbt').style.display = 'none';
+            document.getElementById('opt').style.display = 'none';
+            // document.getElementById('suc').style.display = 'none';
+            let uname = document.getElementById('name').value = uname;
+            let pass = document.getElementById('Password').value = pass;
+            let add = document.getElementById('add').value = add;
+
+
+        })
+        document.getElementById('sbt').addEventListener('click', function () {
+            document.getElementById('demo').innerHTML = "<h1>Sucess.....</h1>";
+            document.getElementById('edit').style.display = 'none';
+            form.style.display = 'none';
+            document.getElementById('sbt').style.display = "none";
+        })
+    </script>
+</body>
+
+</html>

@@ -44,3 +44,21 @@ console.log(Employee1);
 console.log(Developer1);
 
 // console.log(Employee1 instanceof Developer1);
+
+
+//MDN Documentation
+class PersonP{
+    constructor(name){
+        this.name=name;
+    }
+
+    introduce(){
+        console.log(`Hello , My name is Rabindra Kumar Sharma`);
+    }
+}
+
+const otto1=new PersonP();
+// const otto1=new PersonP("Otto");
+otto1.introduce();
+
+

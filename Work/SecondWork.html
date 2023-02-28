@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EDIT & DELETE</title>
+    </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body align="center">
+    
+            
+            <form onsubmit="event.preventDefault();onFormSubmit();">
+
+                   
+                        <label class="validation-error hide" id="fullNameValidationError">First Name</label>
+                        <input type="text" name="fname" id="fname"><br>
+                   
+                        <label>Last Name</label>
+                        <input type="text" name="lname" id="lname"><br>
+                    
+                        <label>Address  :</label>
+                        <input type="text" name="address" id="address"><br>
+                   
+                        <input type="radio" name="gender" id="gender" value="Male">Male
+                        <input type="radio" name="gender" id="gender" value="Female">Female<br><br>
+                    
+                    <div  class="form-action-buttons">
+                        <i>Condition</i><input type="checkbox" id="check"  onclick="activate()"><br><br>
+                        <script>
+                            function activate(){
+                                var check =document.getElementById("check");
+                                var btn =document.getElementById("btn");
+                                if(check.checked)
+                                {
+                                    btn.removeAttribute("disabled");
+                                }else
+                                    {
+                                         btn.disabled="true";
+                                    }
+                                }
+                        </script>
+                        <input disabled="true" type="submit" value="SUBMIT" id="btn">
+                    </div><br>
+                    <br>
+                    <br>
+                    <br>
+            </form>
+            
+            <td>
+                <table align="center" border="5" class="list" id="employeeList">
+                    <thead>
+                        <tr>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </td>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        var selectedRow = null
+
+function onFormSubmit() {
+    if (validate()) {
+        var formData = readFormData();
+        if (selectedRow == null)
+            insertNewRecord(formData);
+        else
+            updateRecord(formData);
+        resetForm();
+    }
+}
+
+function readFormData() {
+    var formData = {};
+    formData["fname"] = document.getElementById("fname").value;
+    formData["lname"] = document.getElementById("lname").value;
+    formData["address"] = document.getElementById("address").value;
+    console.log(formData["gender"]);
+    //formData["gender"] = document.getElementById("gender").value;
+    // formData[vs]=vs;
+    return formData;
+}
+
+function insertNewRecord(data) {
+    var table = document.getElementById("employeeList").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.fname;
+
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.lname;
+
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = data.address;
+
+    cell4 = newRow.insertCell(3);
+    // cell4.innerHTML = data.gender;
+    cell4.innerHTML=displayRadio();
+
+    cell5 = newRow.insertCell(4);
+
+    //Here Implemented The Edit and Delete Actions
+    cell5.innerHTML = `<a onClick="onEdit(this)">Edit</a> \u00A0
+                       <a onClick="onDelete(this)">Delete</a>`;
+}
+
+function resetForm() {
+    document.getElementById("fname").value = "";
+    document.getElementById("lname").value = "";
+    document.getElementById("address").value = "";
+    //document.getElementById("gender").value = "";
+    // vs.value="";
+    
+    selectedRow = null;
+}
+
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("fname").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("lname").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("address").value = selectedRow.cells[2].innerHTML;
+    //document.getElementById("gender").value = selectedRow.cells[3].innerHTML;
+    // vs=electedRow.cells[3].innerHTML;
+}
+function updateRecord(formData) {
+    selectedRow.cells[0].innerHTML = formData.fname;
+    selectedRow.cells[1].innerHTML = formData.lname;
+    selectedRow.cells[2].innerHTML = formData.address;
+    selectedRow.cells[3].innerHTML = displayRadio();
+   
+
+}
+
+//BUTTON FUNCTION PERFORMED
+
+function onDelete(td) {
+    if (confirm('Are you delete this record ?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("employeeList").deleteRow(row.rowIndex);
+        resetForm();
+    }
+}
+function validate() {
+    isValid = true;
+    if (document.getElementById("fname").value == "") {
+        isValid = false;
+        document.getElementById("fname").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("fullNameValidationError").classList.contains("hide"))
+            document.getElementById("fullNameValidationError").classList.add("hide");
+    }
+    return isValid;
+}
+console.log(vs);
+
+function displayRadio() {
+    var ele = document.getElementsByName("gender");
+    for (var i = 0; i <= ele.length; i++) {
+      if (ele[i].checked) {
+        return (document.getElementById("gender").innerHTML = ele[i].value);
+      }
+    }
+  }
+    </script>
+</body>
+
+</html>

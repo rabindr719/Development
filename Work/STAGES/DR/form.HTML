@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><center>
+
+    First Name : <input type="text" name="fname" id="fname"><br><br>
+    Last Name :<input type="text" name="lname" id="lname"><br><br>
+    Address : <input type="text" name="address" id="address"><br><br>
+    <x>Gender</x>
+    <input type="radio" name="gender" id="gender" value="Male">Male
+    <input type="radio" name="gender" id="gender" value="Female">Female<br><br>
+   
+
+   <g>Condition</g>
+    <input type="checkbox" id="check"  onclick="activate()"><br><br>
+
+    <button disabled="true" id="btn" onclick="adde();"><b>Accepted<b></button>
+
+<table border="5" id="show">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th id = 'Editbtn'>Edit</th>
+            <!-- <th><th id="editb">Edit</th></th> -->
+            <th>Delete</th>
+        </tr>
+    </thead>
+</table>
+</center>
+<script src="add.js"></script>
+</body>
+<script>
+    function activate(){
+        var check =document.getElementById("check");
+        var btn =document.getElementById("btn");
+        if(check.checked)
+        {
+            btn.removeAttribute("disabled");
+        }else
+            {
+                 btn.disabled="true";
+            }
+        }
+</script>
+
+</html>

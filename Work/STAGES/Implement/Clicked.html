@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><center>
+
+    are You Agree
+    <input type="checkbox" id="check"  onclick="enable()"><br><br>
+
+    <button disabled="true" id="btn">Condition</button>
+</center>
+</body>
+<script>
+    function enable(){
+        var check =document.getElementById("check");
+        var btn =document.getElementById("btn");
+        if(check.checked)
+        {
+            btn.removeAttribute("disabled");
+        }else
+            {
+                 btn.disabled="true";
+            }
+        }
+</script>
+
+</html>
