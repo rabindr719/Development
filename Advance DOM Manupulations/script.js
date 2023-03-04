@@ -18,8 +18,11 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
-for (let i = 0; i < btnsOpenModal.length; i++)
-  btnsOpenModal[i].addEventListener('click', openModal);
+btnCloseModal.addEventListener('click',closeModal);
+overlay.addEventListener('click', closeModal);
+
+// for (let i = 0; i < btnsOpenModal.length; i++)
+//   btnsOpenModal[i].addEventListener('click', openModal);
 
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
@@ -30,97 +33,64 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-
-
-
-///Start The Advance DOM Manupulations 
-
-console.log(document.documentElement);
+console.log?(documnet.documentElement);
 console.log(document.head);
 console.log(document.body);
 
 document.querySelector('.header');
-const allSections=document.querySelectorAll('.section');
+const allSections=document.querySelector('.section');
 console.log(allSections);
 
 document.getElementById('section--1');
-const allButtons=document.getElementsByTagName('buttton');
+const allButtons=document.getElementsByTagName('button');
 console.log(allButtons);
 
+console.log(allButtons);
 console.log(document.getElementsByClassName('btn'));
 
-//Craeting and Inserting Elements
+const message=document.createElement('div');
+message.classList.add('cookie-message');
 
- const messsage=document.createElement('div');
- messsage.classList.add('cookie-message');
+message.innerHTML='We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+// headers.prepend(message);
+header.append(message);
 
- message.innerHTML=
- 'We use for imporved browsing experience on the internet.<button class="btn btn--close-cookie">Go it! </button>';
-
- //header.prepend(meassage);
- headers.append(message);
- //header.before(message);
- //header.after(message);
-
- //Delete elemets
-
-// Navigation Creating 
-//  section1.scrollIntoView({behavior:'smooth'});
-
- document.querySelector('.btn--close-cookie').
- addEventListener('click',function(){
   // message.remove();
 
   message.parentElement.removeChild(message);
-
- });
-
-
- document.querySelector('.nav__links').addEventListener('click', function(e){
-  console.log(e.target);
-
-  //Matching Startergy
-
-  if(e.target.classList.contains('nav__link'))
-  {
-    console.log('LINK');
-  }
- });
+});
 
 
- //Styles
 
- message.style.backgroundColor='#37383d';
- message.style.width='120%';
+message.style.backgroundColor='#37383d';
 
+message.style.width='120%';
 
- console.log(message.style.color);
- console.log(message.style.backgroundColor);
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
 
- console.log(getComputedStyle(message).color);
- console.log(getComputedStyle(message).height);
+console.log(getComputedStyle(message).height, 10)+30+px;
 
- message.style.height=
- Number.parseFloat(getComputedStyle(message).height,10)+30+'px';
+document.documentElement.style.setProperty('--color-primary', 'orangered');
 
- document.documentElement.style.setProperty('--color-primary','orangered');
+//Attributes
 
+const logo=document.querySelector('.nav__logo');
 
- //Attributes
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+// console.log(logo.designer);
 
- const logo=document.querySelector('.nav__logo');
- console.log(logo.alt);
- console.log(logo.src);
- console.log(logo.className);
+logo.alt='Beautiful minimalist logo';
 
- //Non-Standard
+//Non-Standard
 
- console.log(logo.designer);
- console.log(logo.getAttribute('designer'));
- logo.setAttribute('company', 'BankList');
-//  logo.getAttribute('company', 'BankList');
+console.log(logo.designer);
+console.log(logo.getAttribute('designer'));
+console.log('company', 'BankList');
 
-console.log(logo.src)
+console.log(logo.src);
 console.log(logo.getAttribute('src'));
 
 const link =document.querySelector('.nav__link--btn');
@@ -128,93 +98,60 @@ const link =document.querySelector('.nav__link--btn');
 console.log(link.href);
 console.log(link.getAttribute('href'));
 
-//Data Attributs
+console.log(logo.dataset.versionNumber);
 
-console.log(logo.data.versionNumber);
-
-//Classes
-
-logo.classListadd('c', 'j');
-logo.classList.remove('c','j');
+logo.classList.add('c', 'j');
+logo.classList.remove('c', 'j');
 logo.classList.toggle('c');
 logo.classList.contains('c');
 
-//LECTURE Changed 188
+// Dont Use
+// logo.className='Jonas'
 
-const btnScrollTo=document.querySelector
-('.btn--scroll-to');
+const btnScrollTo=document.querySelector('.btn--scrooll-to');
 const section1=document.querySelector('#section--1');
 
-btnScrollTo.addEventListener('click', function(e){
-
+btnScrollTo.addEventListener('click', function(e)
+{
   const s1coords=section1.getBoundingClientRect();
   console.log(s1coords);
 
   console.log(e.target.getBoundingClientRect());
-  console.log('Current Scroll (X/Y)', 
-  window.pageXOffset, window.pageYOffset);
-  console.log('height/width viewpoint',
-  document.documentElement.clientHeight,
-  document.documentElement.clientWidth);
 
+  console.log('Currrent scroll (X/Y)' , window.pageXOffset, pageYOffset);
 
-  //Scrollong
-  //window.scroll
+  console.log(
+    'height/width viewpoint',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
 
+  );
 
   window.scrollTo({
-    left: s1coords.left+window.pageXOffset,
+    left: s1coords.left + window.pageXOffset,
     top: s1coords.top + window.pageYOffset,
-    behaviour: 'smooth',
-     
+    behaviour : 'smooth',
+
   });
 
-    section1.scrollIntoView({behavior:'smooth'});
+  section1.scrollIntoView({behavior: 'smooth'});
 
 });
 
-const h1=document.querySelector('h1');
-const alert1=function(e){
-  alert('addEventListener: Great! You are Reading the Heading :D');
 
-  h1.removeEventListener('mouseenter', alert1);
-};
+const h1= document.querySelector('h1');
 
+const alertH1=function(e){
+  alert('addEventListener Graet You are reading the Heading : D');
 
-
-h1.addEventListener('mouseenter', alert1);
-
-setTimeout(()=>h1.removeEventListener('mouseenter',alert1), 3000);
-
-*/
+}
+h1.addEventListener('mouseenter', alertH1);
 
 
-const h1=document.querySelector('h1');
-console.log(h2.querySelector('.highlight'));
-console.log(h1.childNodes);
+setTimeout(()=>h1.removeEventListener('mouseenter', alertH1), 3000);
 
-console.log(h1.childNodes);
-console.log(h1.children);
-h1.firstElementChild.style.color='white';
-h1.lastElementChild.style.color='oragered';
+// h1.onmouseenter= function(e){
+//   alert('addEventListener Graet You are reading the Heading : D');
 
-//Going upward : parents
+// };
 
-console.log(h1.parentNode);
-console.log(h1.parentElement);
-
-h1.closest('.header').style.background='var(--gradient-secondary)';
-h1.closest('.h1').style.background='var(--gradient-primary)';
-
-//Going sideways: siblings
-
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
-
-console.log(h1.previousSiibling);
-console.log(h1.nextSibling);
-
-console.log(h1.parentElement.children);
-[...h1.parentElement.children].forEach(function(el){
-  if(el!==h1) el.style.transform='scale(0.5)';
-});
