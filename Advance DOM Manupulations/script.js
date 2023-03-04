@@ -2,7 +2,7 @@
 
 ///////////////////////////////////////
 // Modal window
-
+/*
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
@@ -55,13 +55,12 @@ message.innerHTML='We use cookied for improved functionality and analytics. <but
 // headers.prepend(message);
 header.append(message);
 
-document.querySelector('.btn--close-cookie').addEventListener('click', function(){
   // message.remove();
 
   message.parentElement.removeChild(message);
 });
 
-//Styles
+
 
 message.style.backgroundColor='#37383d';
 
@@ -156,28 +155,3 @@ setTimeout(()=>h1.removeEventListener('mouseenter', alertH1), 3000);
 
 // };
 
-
-const randomInt=(min, max)=> Math.floor(Math.random()*(max-min +1)+min);
-const randonColor=()=>`rgb(${randomInt(0, 255)}, ${randomInt(0,255)}, ${randomInt(0,255)})`;
-
-document.querySelector('.nav__link').addEventListener('click', function(e){
-  
-  this.style.backgroundColor = randonColor();
-  console.log('LINK ', e.target ,e.currentTarget);
-  console.log(e.currentTarget===this);
- 
-  //STOP PROPAGATION 
-
-  // e.stopPropagation();
-
-});
-document.querySelector('.nav__links').addEventListener('click', function(e){
-  
-  this.style.backgroundColor = randonColor();
-  console.log('CONTAINER', e.target, e.CurrentTarget);
-});
-document.querySelector('.nav').addEventListener('click', function(e){
-  this.style.backgroundColor = randonColor();
-  console.log('NAV', e.target, e.currentTarget);
-
-});

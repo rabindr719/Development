@@ -12,7 +12,7 @@ const Jonas={
     firstName: 'Rabindra',
     year:2000,
     calcAge1: function(){
-        console.log(2037-this.year)
+        console.log(2023-this.year)
         const self=this;
         const isMillenial=function(){
 
